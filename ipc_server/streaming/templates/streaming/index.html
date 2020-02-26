@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Live Cam</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<video id="video1" autoplay controls="controls"></video>
+<script>
+        if (Hls.isSupported()) {
+          var video1 = document.getElementById('video1');
+          var hls1 = new Hls();
+          // bind them together
+          hls1.attachMedia(video1);
+          hls1.on(Hls.Events.MEDIA_ATTACHED, function () {
+            console.log("video and hls.js are now bound together !");
+            // load variable from views.py
+            hls1.loadSource("{{stream_path}}");
+            hls1.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+              console.log("manifest loaded, found " + data.levels.length + " quality level");
+            });
+          });
+        }
+</script>
+</body>
+</html>
