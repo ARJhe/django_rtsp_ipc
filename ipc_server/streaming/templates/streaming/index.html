@@ -1,14 +1,30 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <title>Live Cam</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 </head>
 <body>
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<video id="video1" autoplay controls="controls"></video>
+
+
+<main>
+    <div class="nav">
+        <div class="menu">
+            <!-- reload get thumbnail -->
+            <img class="website-text-logo" src="{% static 'img/snapshot.jpg' %}"/>
+        </div>
+    </div>
+    <div class="content">
+        <video id="video" autoplay controls="controls" width="100%" height="100%"></video>
+    </div>
+</main>
+
+
 <script>
         if (Hls.isSupported()) {
-          var video1 = document.getElementById('video1');
+          var video1 = document.getElementById('video');
           var hls1 = new Hls();
           // bind them together
           hls1.attachMedia(video1);
@@ -21,6 +37,7 @@
             });
           });
         }
+
 </script>
 </body>
 </html>

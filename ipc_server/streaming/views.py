@@ -1,7 +1,12 @@
 from django.shortcuts import render
+from . import tests as t
 
-stream_path = "http://127.0.0.1:8000/static/live/stream/mystream.m3u8"
+
+stream_path = "http://127.0.0.1:8000/static/live/stream1/mystream.m3u8"
 
 
 def home(request):
+    # get thumbnails here
+    t.announce()
+    t.exe()
     return render(request, 'streaming/index.html', {'stream_path': stream_path})
