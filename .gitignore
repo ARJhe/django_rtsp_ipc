@@ -5,5 +5,5 @@
 *.m3u8
 *.ts
 *.pyc
-ffmpeg_ipc.py
+parameter.py
 *.jpg
